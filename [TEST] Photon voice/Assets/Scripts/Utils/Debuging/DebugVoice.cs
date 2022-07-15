@@ -15,6 +15,7 @@ public class DebugVoice : MonoBehaviour
     void OnCharacterSpawn(PlayerController player)
     {
         photonVoiceView = player.GetComponent<PhotonVoiceView>();
+        Log.InitLogger(NetworkManger.Instance.debugText);
         recorder = photonVoiceView.RecorderInUse;
         foreach (var toggle in toggles)
         {
@@ -24,12 +25,15 @@ public class DebugVoice : MonoBehaviour
     }
     bool LoadSettings(Toggle toggle)
     {
+        Log.SetColor(Color.yellow);
         bool isOn = default;
         if (PlayerPrefs.HasKey(toggle.name))
         {
             isOn = bool.Parse(PlayerPrefs.GetString(toggle.name, toggle.isOn.ToString()));
-            Debug.Log($"Initializing toggles {toggle.name} isOn {isOn}");
+            Color color = isOn ? Color.green : Color.red;
+            Log.log($"Initializing toggles {toggle.name} isOn", $"{isOn}", color);
         }
+        Log.ResetColor();
         return isOn;
     }
     void InitToggles(Toggle toggle)
@@ -71,16 +75,14 @@ public class DebugVoice : MonoBehaviour
         {
             case "Transmit":
                 recorder.TransmitEnabled = toggle.isOn;
-                Debug.Log($"Transmit {recorder.TransmitEnabled}");
                 PlayerPrefs.SetString(toggle.name, toggle.isOn.ToString());
                 break;
             case "Echo":
                 recorder.DebugEchoMode = toggle.isOn;
-                Debug.Log($"Echo {recorder.DebugEchoMode}");
                 PlayerPrefs.SetString(toggle.name, toggle.isOn.ToString());
                 break;
         }
-    } 
+    }
     #endregion
 
 

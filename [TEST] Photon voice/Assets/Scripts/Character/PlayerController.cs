@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviourPun
 
     void Awake()
     {
+        recordingSprite.enabled = false;
+        speakingSprite.enabled = false;
         if (photonView.IsMine)
         {
             CameraController.onPlayerSpawn?.Invoke(this);
@@ -38,8 +40,19 @@ public class PlayerController : MonoBehaviourPun
             characterController.Move(move * speed * Time.deltaTime);
             recordingSprite.enabled = voiceView.IsRecording;
             speakingSprite.enabled = voiceView.IsSpeaking;
+            //#if !UNITY_EDITOR
+            DebugRecording(voiceView.IsRecording);
+            //#endif
         }
     }
+
+    #region DEBUGING
+    void DebugRecording(bool recording)
+    {
+        Color color = recording ? Color.green : Color.red;
+        Log.log($"Recording", $"{recording}", color, false);
+    }
+    #endregion
 
     void AssignRecorderOnSpawn()
     {

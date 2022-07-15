@@ -1736,7 +1736,7 @@ MonoBehaviour:
     AppIdRealtime: 
     AppIdFusion: 
     AppIdChat: 
-    AppIdVoice: 
+    AppIdVoice: d470ee47-88c1-44b3-bf7d-28997223100d
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
@@ -1756,7 +1756,7 @@ MonoBehaviour:
   AutoConnectAndJoin: 1
   AutoLeaveAndDisconnect: 1
   WorkInOfflineMode: 0
-  usePunAppSettings: 1
+  usePunAppSettings: 0
   usePunAuthValues: 1
 --- !u!4 &1876411309
 Transform:
@@ -1784,19 +1784,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91175dcc15224463780e01a8a98b1b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logLevel: 1
+  logLevel: 2
   ignoreGlobalLogLevel: 0
-  voiceDetection: 1
+  voiceDetection: 0
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
-  unityMicrophoneDevice: Microphone (HD Webcam C615)
+  unityMicrophoneDevice: 
   photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
-  reliableMode: 0
+  reliableMode: 1
   encrypt: 0
   transmitEnabled: 1
-  samplingRate: 48000
+  samplingRate: 24000
   frameDuration: 20000
   bitrate: 30000
   sourceType: 0

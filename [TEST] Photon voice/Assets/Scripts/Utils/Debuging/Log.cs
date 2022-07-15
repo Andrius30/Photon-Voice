@@ -20,8 +20,26 @@ public class Log
         }
     }
     public static void ResetColor() => color = defaultColor;
-    public static void log(string s, int fontSize = 30)
+    public static void log(string s, bool newLine = true, int fontSize = 30)
     {
-        debugText.text += $"{s} :{fontSize}:{color};".Interpolate() + "\n";
+        if (newLine)
+        {
+            debugText.text += $"{s} :{fontSize}:{color};".Interpolate() + "\n";
+        }
+        else
+        {
+            debugText.text = $"{s} :{fontSize}:{color};".Interpolate();
+        }
+    }
+    public static void log(string s, string secondraryText, Color sColor, bool newLine = true, int fontSize = 30)
+    {
+        if (newLine)
+        {
+            debugText.text += $"{s} :{fontSize}:{color};".Interpolate() + $"{secondraryText} :{fontSize}:{sColor};".Interpolate() + "\n";
+        }
+        else
+        {
+            debugText.text = $"{s} :{fontSize}:{color};".Interpolate() + $"{secondraryText} :{fontSize}:{sColor};".Interpolate();
+        }
     }
 }

@@ -8,7 +8,7 @@ public class NetworkManger : MonoBehaviourPunCallbacks
 {
     public static NetworkManger Instance;
 
-    [SerializeField] TextMeshProUGUI debugText;
+    public TextMeshProUGUI debugText;
     [SerializeField] int maxPlayers = 2;
 
     void Awake()
